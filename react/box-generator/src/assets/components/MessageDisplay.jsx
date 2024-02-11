@@ -7,9 +7,7 @@ const MessageDisplay = (props) => {
 
     return (
         <>
-            <ul style={{
-                listStyle: 'none',
-            }}>
+            <ul style={{ listStyle: 'none' }}>
                 {colorArray.map((item, i) =>
                     <li key={i}>{item}
                         <div style={{
