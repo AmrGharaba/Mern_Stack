@@ -5,34 +5,27 @@ import './App.css'
 import axios from 'axios'
 
 function App() {
-  const [arr, setArr] = useState([]);
-
-
+  const [pokemons, setPokemons] = useState([]);
 
   const getPokemon = () => {
-
-    axios.get('https://pokeapi.co/api/v2/pokemon').then(response => {
-      setArr(response.data.results);
-      console.log(response.data.results);
-    })
+    axios.get('http://pokeapi.co/api/v5/pokemon')
+      .then(response => {
+        setPokemons(response.data.results);
+        console.log(response);
+      })
+      .catch(error => console.log(error));
   }
-
 
   return (
     <>
       <button onClick={() => getPokemon()}>
         click me!
       </button>
-
       <ul>
-        {arr.map((item, i) => (
+        {pokemons.map((item, i) => (
           <li key={i}>{item.name}</li>
         ))}
       </ul>
-
-
-
-
     </>
   )
 }
