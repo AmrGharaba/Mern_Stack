@@ -2,7 +2,7 @@ import react, { useState } from 'react';
 
 
 const MessageDisplay = (props) => {
-    const colorArray = [...props.colorArray]
+    const colorArray = props.colorArray;
 
 
     return (
@@ -14,7 +14,7 @@ const MessageDisplay = (props) => {
                             height: "20px",
                             width: "20px",
                             backgroundColor: item,
-                            listStyle: 'none',
+
                         }}>
                         </div>
                     </li>)}

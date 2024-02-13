@@ -8,6 +8,7 @@ const MessageForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.onSubmit(color);
+        setColor("");
     };
 
 
