@@ -1,27 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
-const TaskDisplay = ({ taskArray, onRemove }) => {
+const TaskDisplay = (props) => {
+    const { taskArr, setTaskArr } = props;
 
-    // const toggleCheckbox = (index) => {
+    useEffect(() => {
+        console.log(taskArr);
+    }, [taskArr]);
 
-    // };
+    const handleToggle = (idx) => {
 
-    const remove = (index) => {
-        onRemove(index);
-    };
+        const updatedTaskArr = [...taskArr];
+        updatedTaskArr[idx].status = !updatedTaskArr[idx].status;
+        setTaskArr(updatedTaskArr);
+    }
+
+    const handleDelete = (idx) => {
+        const deleteTaskArr = [...taskArr];
+        deleteTaskArr.splice(idx, 1)
+        setTaskArr(deleteTaskArr);
+
+    }
 
     return (
         <>
             <ul className="list-group">
-                {taskArray.map((item, idx) => (
+                {taskArr.map((item, idx) => (
                     <li className="list-group-item" key={idx}>
-                        <input
-                            type="checkbox"
-                        // checked={false}
-                        // onChange={() => toggleCheckbox(idx)}
-                        />
-                        <span style={{ marginLeft: '5px', marginRight: '10px' }}>{item}</span>
-                        <button onClick={() => remove(idx)}>Delete</button>
+                        <input type="checkbox" checked={item.status ? true : false} onChange={() => handleToggle(idx)} />
+                        <span style={{ marginLeft: '5px', marginRight: '10px', textDecoration: item.status ? "line-through" : "none", }}>{item.description}</span>
+                        <input type="button" value="Delete" onClick={() => handleDelete(idx)} />
                     </li>
                 ))}
             </ul>
