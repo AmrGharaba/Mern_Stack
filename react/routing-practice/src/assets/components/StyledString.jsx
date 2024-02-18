@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-const Word = (props) => {
+
+const StyledString = () => {
     const { text, textColor, backColor } = useParams();
 
 
@@ -14,4 +15,4 @@ const Word = (props) => {
         </>
     )
 }
-export default Word
+export default StyledString

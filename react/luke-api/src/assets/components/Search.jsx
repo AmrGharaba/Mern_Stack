@@ -25,6 +25,7 @@ const Search = (props) => {
         axios.get('https://swapi.dev/api/' + category + "/" + idx)
             .then((response) => {
                 setResult(response.data);
+                console.log(result);
             })
             .catch(error => console.log(error));
     }
