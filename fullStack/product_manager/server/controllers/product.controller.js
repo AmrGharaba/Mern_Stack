@@ -44,19 +44,6 @@ module.exports.updateExistingProduct = (req, res) => {
         });
 }
 
-// module.exports.fullyUpdateExistingJoke = (req, res) => {
-//     Joke.findOneAndUpdate(
-//         { _id: req.params.id },
-//         req.body,
-//         { new: true, runValidators: true }
-//     )
-//         .then(updatedJoke => {
-//             res.json({ joke: updatedJoke })
-//         })
-//         .catch((err) => {
-//             res.json(err)
-//         });
-// }
 
 module.exports.deleteAnExistingProduct = (req, res) => {
     Product.deleteOne({ _id: req.params.id })
@@ -67,13 +54,3 @@ module.exports.deleteAnExistingProduct = (req, res) => {
             res.json(err)
         });
 }
-
-// module.exports.randomJoke = (req, res) => {
-//     Joke.aggregate([{ $sample: { size: 1 } }])
-//         .then(result => {
-//             res.json({ result: result })
-//         })
-//         .catch((err) => {
-//             res.json(err)
-//         });
-// }

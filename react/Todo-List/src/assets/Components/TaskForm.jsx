@@ -13,7 +13,7 @@ const TaskForm = (props) => {
         }
         props.onSubmit(newTask);
 
-    };
+    };  
 
 
     const handleInput = (e) => {

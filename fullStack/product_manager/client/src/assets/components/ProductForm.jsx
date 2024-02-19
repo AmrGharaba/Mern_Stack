@@ -8,9 +8,9 @@ const ProductForm = props => {
   const [price, setPrice] = useState("");
   const [description, setDesc] = useState("");
 
+
   const createProduct = (e) => {
     e.preventDefault();
-
     axios.post('http://localhost:8000/api/products', {
       title,
       price,
@@ -22,11 +22,18 @@ const ProductForm = props => {
     setTitle("");
     setPrice("");
   }
+  // useEffect(() => {
+  //   axios.get('http://localhost:8000/api/products')
+  //     .then(res => {
+  //       console.log(res.data);
+  //     })
+  //     .catch(err => console.error(err));
+  // }, [createProduct]);
 
 
   return (
     <>
-      <form onSubmit={createProduct}>
+      <form >
         <h2>Product Manager</h2>
 
         <div className="mb-3">
@@ -41,7 +48,7 @@ const ProductForm = props => {
           <label htmlFor="PtoductDesc" className="form-label">Product description</label>
           <textarea type="text" className="form-control" id="PtoductDesc" onChange={(e) => setDesc(e.target.value)} value={description} />
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" onClick={createProduct} className="btn btn-primary">Submit</button>
 
 
       </form>

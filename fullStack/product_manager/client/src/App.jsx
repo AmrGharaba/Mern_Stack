@@ -1,16 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import ProductForm from './assets/components/ProductForm'
-
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Main from './assets/components/Main';
+import Detail from './assets/components/Detail';
 function App() {
-
   return (
-    <>
-      <ProductForm />
-    </>
-  )
-}
 
-export default App
+    <>
+      <Routes>
+        <Route element={<Main />} path="/products/" />
+        <Route element={<Detail />} path="/products/:id" />
+      </Routes>
+    </>
+
+  );
+}
+export default App;
+
