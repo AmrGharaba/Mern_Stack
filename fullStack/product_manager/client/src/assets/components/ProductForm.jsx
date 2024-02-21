@@ -2,11 +2,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const ProductForm = props => {
+const ProductForm = (props) => {
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDesc] = useState("");
+  const falseLoaded = props.falseLoaded;
 
 
   const createProduct = (e) => {
@@ -15,22 +16,17 @@ const ProductForm = props => {
       title,
       price,
       description
+
     })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res);
+        falseLoaded();
+      })
       .catch(err => console.log(err))
     setDesc("");
     setTitle("");
     setPrice("");
   }
-  // useEffect(() => {
-  //   axios.get('http://localhost:8000/api/products')
-  //     .then(res => {
-  //       console.log(res.data);
-  //     })
-  //     .catch(err => console.error(err));
-  // }, [createProduct]);
-
-
   return (
     <>
       <form >
