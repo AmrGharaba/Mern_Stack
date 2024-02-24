@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import AuthorsForm from './AuthorsForm';
 
 
@@ -10,25 +10,24 @@ function Update() {
     const { id } = useParams();
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
-
+    const [idError, setIdErr] = useState(false);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/authors/${id}`)
             .then(res => {
                 console.log(res.data.Author.name);
+                setIdErr(false)
                 setName(res.data.Author.name);
             })
-            .catch(err => console.error(err));
-
+            .catch(err => {
+                setIdErr(true);
+            });
     }, [id]);
-
-
 
     const updateAuthor = e => {
         e.preventDefault();
         axios.patch(`http://localhost:8000/api/authors/${id}`, {
             name,
-
         })
             .then(res => {
                 console.log(res);
@@ -48,14 +47,25 @@ function Update() {
                 setName(res.data.Author.name);
             })
             .catch(err => console.error(err));
-
     }
 
     return (
-        <div>
-            <h2>Update Author</h2>
-            <AuthorsForm onSubmitProp={updateAuthor} name={name} setName={setName} errors={errors} ></AuthorsForm>
-        </div >
+        <>
+            {idError ?
+                <>
+                    <h1> Error 404 page not found</h1 >
+                    <Link to={`/authors`}><button type="button" className="btn btn-lg btn-primary mt-5" >Return Home</button></Link>
+                </>
+                :
+                <>
+                    <h2>Update Author</h2>
+                    <AuthorsForm onSubmitProp={updateAuthor} name={name} setName={setName} errors={errors} ></AuthorsForm>
+                </>
+
+            }
+
+
+        </>
     )
 }
 

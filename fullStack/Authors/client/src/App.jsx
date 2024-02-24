@@ -40,7 +40,17 @@ function App() {
       <Routes>
         <Route element={<AuthorsList />} path='/authors'></Route>
         <Route element={<Update />} path='/authors/:id/edit'></Route>
-        <Route element={<><h2>Add a new Author</h2><AuthorsForm onSubmitProp={createAuthor} name={name} setName={setName} errors={errors} /></>} path='/authors/new'></Route>
+        <Route element={
+          <>
+            <h2>Add a new Author</h2>
+            <AuthorsForm
+              onSubmitProp={createAuthor}
+              name={name}
+              setName={setName}
+              errors={errors} />
+          </>
+        }
+          path='/authors/new'></Route>
       </Routes>
     </>
   )
