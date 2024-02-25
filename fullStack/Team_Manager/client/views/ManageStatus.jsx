@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import PlayerStatus from '../components/PlayerStatus';
-import { useNavigate, Link, Route, Routes } from 'react-router-dom';
+import { useLocation, Link, Route, Routes } from 'react-router-dom';
 
 function ManageStatus() {
 
     const [players, setPlayers] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [gameId, setGameId] = useState(1);
-    
+    const location = useLocation();
+
 
 
     useEffect(() => {
@@ -28,12 +29,12 @@ function ManageStatus() {
     return (
         <>
             <div className="card">
-                <div className="card-header ">Player's  Game{gameId} status</div>
+                <h6 className="card-title d-flex justify-content-center pt-2 ">Player's  Game-{gameId} status</h6>
 
                 <div className="card-header d-flex justify-content-start gap-3">
-                    <Link to={'/status/game/1'}>Game 1</Link>
-                    <Link to={'/status/game/2'}>Game 2</Link>
-                    <Link to={'/status/game/3'}>Game 3</Link>
+                    <Link className={location.pathname.includes('game/1') ? "text-success" : ""} to={'/status/game/1'}>Game 1</Link>
+                    <Link className={location.pathname.includes('game/2') ? "text-success" : ""} to={'/status/game/2'}>Game 2</Link>
+                    <Link className={location.pathname.includes('game/3') ? "text-success" : ""} to={'/status/game/3'}>Game 3</Link>
                 </div>
                 <div className="card-body">
                     <Routes>

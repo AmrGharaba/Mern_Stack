@@ -25,7 +25,7 @@ function PlayersDisplay() {
   }
 
   return (
-    <table className="table" style={{ width: '30rem ' }}>
+    <table className="table" style={{ width: '35rem ' }}>
       <thead>
         <tr>
           <th scope="col">Player Name</th>

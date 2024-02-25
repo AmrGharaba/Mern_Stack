@@ -20,6 +20,7 @@ function PlayerStatus(props) {
                 const updatedPlayers = players.map(player => {
                     if (player._id === playerId) {
                         return { ...player, [`game${game.id}`]: status };
+
                     }
                     return player;
                 });
@@ -38,11 +39,7 @@ function PlayerStatus(props) {
                 </tr>
             </thead>
             <tbody>
-                {!loaded ? (
-                    <tr>
-                        <td>loading...</td>
-                    </tr>
-                ) : (
+                {!loaded ? <p>loading</p> :
                     players.map(player => (
                         <tr key={player._id}>
                             <td>{player.name}</td>
@@ -54,7 +51,7 @@ function PlayerStatus(props) {
                             </td>
                         </tr>
                     ))
-                )}
+                }
             </tbody>
         </table>
     );

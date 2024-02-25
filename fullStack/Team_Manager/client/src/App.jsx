@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 import ManagePlayers from '../views/ManagePlayers'
-import { Route, Routes, Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { Route, Routes, Link, useNavigate, useLocation } from 'react-router-dom'
 import './App.css'
-import PlayerForm from '../components/PlayerForm'
 import ManageStatus from '../views/ManageStatus'
 
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect((() => {
     navigate('/players/list');
@@ -17,8 +16,11 @@ function App() {
   return (
     <>
       <div className="card p-3">
+        <h5 className='card-title d-flex justify-content-around'>
+          <Link className={`${location.pathname.includes("players") ? "text-success" : ""}`} to={'/players/list'} >Manage Players</Link>
+          <Link className={location.pathname.includes("status") ? "text-success" : ""} to={'/status/game/1'} >Manage Player Status</Link>
+        </h5>
         <div className="card-body">
-          <h5 className="card-title mb-5 d-flex justify-content-around  "><Link to={'/players/list'} >Manage Players</Link><Link to={'/status/game/1'} >Manage Player Status</Link></h5>
           <Routes>
             <Route element={<ManagePlayers />} path="/players/*" />
             <Route element={<ManageStatus />} path="/status/*" />

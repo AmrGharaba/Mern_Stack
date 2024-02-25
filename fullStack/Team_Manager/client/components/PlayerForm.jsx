@@ -36,7 +36,7 @@ function PlayerForm() {
         setPosition("");
     }
     return (
-        <div className="card" style={{ width: '30rem ' }}>
+        <div className="card" style={{ width: '35rem ' }}>
             <div className="card-body">
                 <h5 className="card-title ">Add player</h5>
                 <form >
