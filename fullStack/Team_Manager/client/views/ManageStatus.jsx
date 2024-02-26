@@ -38,7 +38,16 @@ function ManageStatus() {
                 </div>
                 <div className="card-body">
                     <Routes>
-                        <Route element={loaded && <PlayerStatus players={players} setPlayers={setPlayers} loaded={loaded} gameId={gameId} setGameId={setGameId} />} path='/game/:id'></Route>
+                        <Route
+                            element={loaded &&
+                                <PlayerStatus
+                                    players={players}
+                                    setPlayers={setPlayers}
+                                    loaded={loaded}
+                                    gameId={gameId}
+                                    setGameId={setGameId} />}
+                            path='/game/:id'>
+                        </Route>
                     </Routes>
 
 

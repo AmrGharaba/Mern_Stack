@@ -17,11 +17,11 @@ const PlayerSchema = new mongoose.Schema({
     },
     game2: {
         type: Number,
-        required: [true, "game1 is required"],
+        required: [true, "game2 is required"],
     },
     game3: {
         type: Number,
-        required: [true, "game1 is required"],
+        required: [true, "game3 is required"],
     }
 
 }, { timestamps: true }

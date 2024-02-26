@@ -15,6 +15,7 @@ function PlayerStatus(props) {
         const statusUpdate = {
             [`game${game.id}`]: status,
         };
+
         axios.patch(`http://localhost:8000/api/players/${playerId}`, statusUpdate)
             .then(res => {
                 const updatedPlayers = players.map(player => {

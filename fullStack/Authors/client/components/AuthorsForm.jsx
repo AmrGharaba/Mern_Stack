@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function AuthorsForm(props) {
     const { onSubmitProp, name, setName, errors } = props;
-    
+
     return (
         <form >
             <div className="mb-3">
@@ -16,7 +16,7 @@ function AuthorsForm(props) {
                     value={name} />
                 {errors.map((err, index) => <small id="nameHelp" className="form-text text-danger " key={index}>{err}</small>)}
             </div>
-            <Link to={`/authors`}><button type="button" className="btn btn-sm btn-warning me-2" >Cancell</button></Link>
+            <Link to={`/authors`}><button type="button" className="btn btn-sm btn-warning me-2" >Cancel</button></Link>
             <button type="submit" onClick={onSubmitProp} className="btn btn-sm btn-primary">Submit</button>
         </form>
     )
